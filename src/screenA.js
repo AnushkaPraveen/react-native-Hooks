@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View, Button,Alert} from 'react-native';
 
 const ScreenA = () => {
   const [count, setCount] = useState(0);
@@ -7,15 +7,52 @@ const ScreenA = () => {
 
   useEffect(() => {
     console.log('Run on Every render');
-   
+    Alert.alert(
+        "useEffect Alert",
+        "useEffect Run on Every render",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
   });
+
+
   useEffect(() => {
     console.log('Runs only on the first render');
-    
+    Alert.alert(
+        "useEffect Alert",
+        "useEffect Runs only on the first render",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
   },[]);
+
+
   useEffect(() => {
     console.log('Runs on the first render and any time any dependency value changes');
-    
+    Alert.alert(
+        "useEffect Alert",
+        "useEffect Runs on the first render and any time any dependency value changes",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
   },[count]);
 
   return (
